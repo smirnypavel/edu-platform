@@ -76,7 +76,7 @@ export function CourseCard({
         </div>
         <div className="mt-auto flex items-center justify-between">
           <div className="text-2xl font-bold">
-            {price.toLocaleString("ru-RU")} ₽
+            {price.toLocaleString("ru-RU")} $
           </div>
           {isPurchased ? (
             <Link href={`/courses/${id}/learn`}>

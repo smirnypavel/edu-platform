@@ -1,10 +1,7 @@
-"use client";
+import { LessonPageContent } from "@/components/courses/lesson-page-content";
+import { notFound } from "next/navigation";
 
-import { LessonSidebar } from "@/components/courses/lesson-sidebar";
-import { LessonContent } from "@/components/courses/lesson-content";
-// import { useRouter } from "next/navigation";
-
-// Моковые данные
+// Моковые данные (в реальном приложении будут загружаться из API)
 const courseData = {
   id: "web-development",
   title: "Веб-разработка с нуля",
@@ -42,42 +39,28 @@ const courseData = {
               "<!DOCTYPE html>\n<html>\n  <head>\n    <title></title>\n  </head>\n  <body>\n    \n  </body>\n</html>",
           },
         },
-        // Другие уроки...
       ],
     },
-    // Другие модули...
   ],
 };
 
-export default function LessonPage({
-  params,
-}: {
-  params: { courseId: string; lessonId: string };
-}) {
-  //   const router = useRouter();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function LessonPage({ params }: { params: any }) {
+  // В реальном приложении здесь будет серверная загрузка данных
+  // eslint-disable-next-line @next/next/no-assign-module-variable
+  const module = courseData.modules.find((m) =>
+    m.lessons.some((l) => l.id === params.lessonId)
+  );
 
-  const currentModule = courseData.modules[0]; // В реальном приложении найдите нужный модуль
-  const currentLesson = currentModule.lessons[0]; // В реальном приложении найдите нужный урок
-
-  const handleComplete = async () => {
-    // Здесь будет логика отправки решения и проверки
-    console.log("Задание выполнено");
-    // После успешной проверки, перенаправляем на следующий урок
-    // router.push(`/courses/${params.courseId}/lessons/next-lesson-id`)
-  };
+  if (!module) {
+    notFound();
+  }
 
   return (
-    <div className="flex h-[calc(100vh-4rem)]">
-      <LessonSidebar
-        modules={courseData.modules}
-        currentModuleId={params.courseId}
-        currentLessonId={params.lessonId}
-      />
-      <LessonContent
-        lesson={currentLesson}
-        onComplete={handleComplete}
-        isCompleted={currentLesson.isCompleted}
-      />
-    </div>
+    <LessonPageContent
+      courseId={params.courseId}
+      lessonId={params.lessonId}
+      initialData={courseData}
+    />
   );
 }

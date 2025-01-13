@@ -320,7 +320,7 @@ export default function Home() {
               <h3 className="text-lg font-semibold mb-4">Контакты</h3>
               <ul className="space-y-2">
                 <li className="text-sm">Email: info@eduportal.com</li>
-                <li className="text-sm">Тел: +7 (999) 123-45-67</li>
+                <li className="text-sm">Тел: +3 (999) 123-45-67</li>
               </ul>
             </div>
           </div>
@@ -427,7 +427,7 @@ const learningPath = [
 const testimonials = [
   {
     name: "Александр Петров",
-    position: "Frontend Developer в Yandex",
+    position: "Frontend Developer в Yota-X",
     text: "Благодаря платформе я смог быстро освоить современный стек технологий и найти работу мечты. AI-ассистент и система практических заданий - это именно то, чего мне не хватало в других курсах.",
   },
   {
@@ -437,7 +437,7 @@ const testimonials = [
   },
   {
     name: "Дмитрий Сидоров",
-    position: "Python Developer в Сбер",
+    position: "Python Developer в SoftSerf",
     text: "Отличная платформа для изучения программирования. AI-ассистент помогает разобраться в сложных темах, а практические задания максимально приближены к реальным задачам.",
   },
 ];
