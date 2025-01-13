@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
-export default {
+const config: Config = {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,10 +11,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+      },
+      transitionProperty: {
+        theme: "background-color, border-color, color, fill, stroke",
+      },
+      transitionDuration: {
+        "300": "300ms",
+      },
+      transitionTimingFunction: {
+        theme: "cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [typography],
+};
+
+export default config;
